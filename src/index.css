@@ -1,0 +1,283 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+
+/* ---------- Design tokens ---------- */
+:root {
+  --font-display: 'Space Grotesk', system-ui, sans-serif;
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+
+  /* Neutral "ink" scale - warmer, deeper charcoal-navy than default gray */
+  --ink-50: #f7f8fb;
+  --ink-100: #eef0f6;
+  --ink-200: #dde0ea;
+  --ink-300: #bcc0d1;
+  --ink-400: #9297ac;
+  --ink-500: #6b7086;
+  --ink-600: #4a4f63;
+  --ink-700: #343849;
+  --ink-800: #1e212b;
+  --ink-900: #12141c;
+
+  /* Signature accent: indigo-violet */
+  --accent-50: #f2effd;
+  --accent-100: #e7e2fb;
+  --accent-400: #8a72ea;
+  --accent-500: #6a4fe0;
+  --accent-600: #5539c9;
+  --accent-700: #4531a8;
+
+  /* Status colors */
+  --amber-50: #fffbeb;
+  --amber-400: #f5a524;
+  --amber-600: #b45309;
+  --emerald-50: #ecfdf5;
+  --emerald-400: #34d399;
+  --emerald-600: #0d8f5f;
+  --rose-50: #fff1f3;
+  --rose-400: #fb7185;
+  --rose-600: #be123c;
+
+  --shadow-card: 0 1px 2px rgba(18, 20, 28, 0.04), 0 4px 16px rgba(18, 20, 28, 0.06);
+  --shadow-card-hover: 0 2px 4px rgba(18, 20, 28, 0.06), 0 12px 28px rgba(18, 20, 28, 0.10);
+  --shadow-focus: 0 0 0 3px rgba(106, 79, 224, 0.18);
+}
+
+/* ---------- Reset / base ---------- */
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--ink-50);
+  color: var(--ink-900);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3 {
+  font-family: var(--font-display);
+  letter-spacing: -0.01em;
+}
+
+:focus-visible {
+  outline: none;
+  box-shadow: var(--shadow-focus);
+  border-radius: 4px;
+}
+
+a {
+  color: inherit;
+}
+
+button {
+  font-family: inherit;
+}
+
+::selection {
+  background: var(--accent-100);
+  color: var(--accent-700);
+}
+
+/* ---------- Buttons ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 10px 16px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.15s ease, border-color 0.15s ease, transform 0.1s ease, box-shadow 0.15s ease;
+}
+.btn:active {
+  transform: translateY(1px);
+}
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+.btn-block {
+  width: 100%;
+}
+.btn-primary {
+  background: linear-gradient(180deg, var(--accent-500), var(--accent-600));
+  color: white;
+  box-shadow: 0 1px 2px rgba(85, 57, 201, 0.15), 0 2px 8px rgba(85, 57, 201, 0.25);
+}
+.btn-primary:hover:not(:disabled) {
+  background: linear-gradient(180deg, var(--accent-400), var(--accent-500));
+  box-shadow: 0 2px 4px rgba(85, 57, 201, 0.2), 0 4px 14px rgba(85, 57, 201, 0.3);
+}
+.btn-secondary {
+  background: white;
+  color: var(--ink-700);
+  border: 1px solid var(--ink-200);
+}
+.btn-secondary:hover:not(:disabled) {
+  background: var(--ink-50);
+  border-color: var(--ink-300);
+}
+.btn-danger {
+  background: white;
+  color: var(--rose-600);
+  border: 1px solid var(--rose-400);
+}
+.btn-danger:hover:not(:disabled) {
+  background: var(--rose-50);
+}
+.btn-link-danger {
+  background: none;
+  border: none;
+  color: var(--rose-600);
+  font-size: 13px;
+  cursor: pointer;
+  padding: 0;
+  font-weight: 500;
+}
+.btn-link-danger:hover {
+  text-decoration: underline;
+}
+
+/* ---------- Form fields ---------- */
+.field {
+  margin-bottom: 16px;
+}
+.field-label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink-700);
+  margin-bottom: 6px;
+  letter-spacing: 0.01em;
+}
+.field-input,
+select.field-input {
+  width: 100%;
+  border: 1.5px solid var(--ink-200);
+  background: white;
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-size: 14px;
+  color: var(--ink-900);
+  font-family: inherit;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+.field-input::placeholder {
+  color: var(--ink-400);
+}
+.field-input:focus {
+  border-color: var(--accent-500);
+  outline: none;
+  box-shadow: var(--shadow-focus);
+}
+.field-input:disabled {
+  background: var(--ink-50);
+  color: var(--ink-500);
+}
+.field-input-code {
+  font-family: var(--font-mono);
+  letter-spacing: 0.3em;
+  text-align: center;
+  font-size: 18px;
+}
+
+/* ---------- Alerts ---------- */
+.alert {
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: 14px;
+  margin-bottom: 16px;
+  border-left: 3px solid transparent;
+}
+.alert-error {
+  background: var(--rose-50);
+  border-left-color: var(--rose-600);
+  color: var(--rose-600);
+}
+.alert-success {
+  background: var(--emerald-50);
+  border-left-color: var(--emerald-600);
+  color: var(--emerald-600);
+}
+.alert-info {
+  background: var(--ink-50);
+  border-left-color: var(--ink-400);
+  color: var(--ink-600);
+}
+
+/* ---------- Card ---------- */
+.card {
+  background: white;
+  border-radius: 12px;
+  border: 1px solid var(--ink-100);
+  box-shadow: var(--shadow-card);
+  transition: box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+/* ---------- Badges ---------- */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border-radius: 999px;
+  padding: 4px 11px;
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+  letter-spacing: 0.01em;
+}
+.badge-org-admin   { background: var(--accent-50);  color: var(--accent-700); }
+.badge-pm          { background: var(--emerald-50); color: var(--emerald-600); }
+.badge-dev         { background: var(--ink-100);    color: var(--ink-700); }
+.badge-qa          { background: var(--amber-50);   color: var(--amber-600); }
+.badge-client      { background: var(--ink-100);    color: var(--ink-500); }
+.badge-pending     { background: var(--amber-50);   color: var(--amber-600); }
+.badge-accepted    { background: var(--emerald-50); color: var(--emerald-600); }
+.badge-revoked     { background: var(--rose-50);    color: var(--rose-600); }
+.badge-expired     { background: var(--ink-100);    color: var(--ink-500); }
+
+/* ---------- Utility ---------- */
+.text-muted { color: var(--ink-500); }
+.text-faint { color: var(--ink-400); }
+.mono { font-family: var(--font-mono); }
+
+/* ---------- Signature element: module chip ----------
+   Echoes the numbered module spec (01, 02, 03...) this whole product is
+   built from - used anywhere a page needs to say which module it belongs to. */
+.module-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+.module-chip-number {
+  background: var(--ink-900);
+  color: white;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 11px;
+  width: 22px;
+  height: 22px;
+  min-width: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+}
+.module-chip-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  color: var(--accent-600);
+  font-weight: 700;
+  text-transform: uppercase;
+}
