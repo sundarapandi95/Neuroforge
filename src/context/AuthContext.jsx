@@ -1,6 +1,6 @@
 import { createContext, useContext, useEffect, useState, useCallback } from 'react'
 import { api } from '../api/client.js'
-
+const MOCK_AUTH = true // set to false once your backend is ready
 const AuthContext = createContext(null)
 
 export function AuthProvider({ children }) {
