@@ -21,7 +21,7 @@ export function AuthProvider({ children }) {
     // TEMPORARY: lets you click through every page without a real backend.
     // Remove this block (and VITE_MOCK_AUTH from .env) once the backend is ready.
     alert('MOCK AUTH VALUE: ' + import.meta.env.VITE_MOCK_AUTH)
-    if (import.meta.env.VITE_MOCK_AUTH === 'true') {
+    if (MOCK_AUTH) {
       setUser({
         userId: 'mock-user-1',
         email: 'you@example.com',
